@@ -1,0 +1,45 @@
+{{#if custom_fields}}
+    {{#each custom_fields}}
+        {{#if name '===' 'color_options'}}
+            <div class="product-color-swatches" data-product-id="{{../id}}">
+                <span class="swatches-label">{{lang 'products.colors'}}:</span>
+                <div class="swatches-container" role="group" aria-label="Product color options">
+                    {{#if value}}
+                        {{#each (parseJSON value) as |color|}}
+                        <button 
+                            class="color-swatch"
+                            data-color-value="{{color}}"
+                            title="{{color}}"
+                            aria-label="Color: {{color}}"
+                            type="button">
+                        </button>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+        {{/if}}
+    {{/each}}
+{{else}}
+    {{#if product.custom_fields}}
+        {{#each product.custom_fields}}
+            {{#if name '===' 'color_options'}}
+                <div class="product-color-swatches" data-product-id="{{../id}}">
+                    <span class="swatches-label">{{lang 'products.colors'}}:</span>
+                    <div class="swatches-container" role="group" aria-label="Product color options">
+                        {{#if value}}
+                            {{#each (parseJSON value) as |color|}}
+                            <button 
+                                class="color-swatch"
+                                data-color-value="{{color}}"
+                                title="{{color}}"
+                                aria-label="Color: {{color}}"
+                                type="button">
+                            </button>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+    {{/if}}
+{{/if}}

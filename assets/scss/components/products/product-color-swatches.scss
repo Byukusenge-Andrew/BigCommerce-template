@@ -1,0 +1,144 @@
+
+.product-color-swatches {
+    margin-top: spacing('single');
+    padding-top: spacing('single');
+    border-top: 1px solid color('greys', 'lighter');
+
+    .swatches-label {
+        display: block;
+        font-size: fontSize('smallest');
+        font-weight: fontWeight('bold');
+        color: color('greys', 'darker');
+        margin-bottom: spacing('half');
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .swatches-container {
+        display: flex;
+        gap: spacing('quarter');
+        flex-wrap: wrap;
+        align-items: center;
+    }
+}
+
+.color-swatch {
+    width: remCalc(32px);
+    height: remCalc(32px);
+    border-radius: 50%;
+    border: 2px solid color('greys', 'lighter');
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    @each $color in (red, blue, green, yellow, purple, pink, orange, brown, gray, black, white) {
+        &[data-color-value="#{$color}"] {
+            background-color: $color;
+        }
+    }
+
+    @supports (--css: variables) {
+        &[style*="data-color"] {
+            background: var(--color-value, transparent);
+        }
+    }
+
+    &:hover {
+        border-color: color('greys', 'darker');
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    &:focus {
+        outline: 2px solid color('primary');
+        outline-offset: 2px;
+    }
+
+    &.active {
+        border-color: color('primary');
+        border-width: 3px;
+        box-shadow: 0 0 0 1px color('primary'), 0 4px 8px rgba(0, 0, 0, 0.15);
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            opacity: 0;
+            animation: swatch-check 0.3s ease forwards;
+        }
+    }
+
+    @keyframes swatch-check {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+   
+    &:focus-visible {
+        outline: 2px solid color('primary');
+        outline-offset: 3px;
+    }
+
+
+    &[style*="background-image"] {
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+        width: remCalc(40px);
+        height: remCalc(40px);
+
+        &:hover {
+            box-shadow: 0 0 0 2px color('primary');
+        }
+    }
+}
+
+
+@media (max-width: breakpoint('medium')) {
+    .color-swatch {
+        width: remCalc(28px);
+        height: remCalc(28px);
+
+        &[style*="background-image"] {
+            width: remCalc(34px);
+            height: remCalc(34px);
+        }
+    }
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .product-color-swatches {
+        .swatches-label {
+            color: color('greys', 'lighter');
+        }
+
+        border-top-color: color('greys', 'darkest');
+    }
+
+    .color-swatch {
+        border-color: color('greys', 'darkest');
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+
+        &:hover {
+            border-color: color('greys', 'lighter');
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15);
+        }
+    }
+}

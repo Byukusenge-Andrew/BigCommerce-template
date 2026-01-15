@@ -1,0 +1,47 @@
+// =============================================================================
+// STENCIL
+// =============================================================================
+
+
+// Tools
+// -----------------------------------------------------------------------------
+//
+// 1. Import Citadel's toolkit for use.
+//
+// -----------------------------------------------------------------------------
+
+@import "../../node_modules/@bigcommerce/citadel/dist/tools/toolkit"; // 1
+@import "tools/tools";
+
+
+@import "settings/global/global"; 
+
+@import "../../node_modules/@bigcommerce/citadel/dist/settings/global/global"; // 2
+
+@import "settings/global/tools"; 
+
+@import "../../node_modules/@bigcommerce/citadel/dist/settings/normalize/normalize"; // 2
+@import "../../node_modules/@bigcommerce/citadel/dist/settings/foundation/foundation"; // 2
+@import "../../node_modules/@bigcommerce/citadel/dist/settings/bigcommerce/bigcommerce"; // 2
+
+@import "../../node_modules/@bigcommerce/citadel/dist/vendor/foundation/foundation"; // 6
+
+@import "settings/normalize/normalize";
+@import "settings/vendor/vendor";
+@import "settings/foundation/foundation";
+@import "settings/citadel/citadel";
+@import "settings/stencil/stencil";
+@import "settings/layouts/layouts"; 
+
+
+
+@import "utilities/utilities";
+@import "../../node_modules/@bigcommerce/citadel/dist/utilities/utilities";
+
+
+@import "../../node_modules/@bigcommerce/citadel/dist/vendor/normalize/normalize";
+@import "../../node_modules/@bigcommerce/citadel/dist/components/components"; 
+@import "common/index"; 
+@import "components/components"; 
+
+@import "layouts/layouts";
