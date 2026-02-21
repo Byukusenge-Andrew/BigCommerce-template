@@ -1,4 +1,3 @@
-
 .product-color-swatches {
     margin-top: spacing('single');
     padding-top: spacing('single');
@@ -34,6 +33,7 @@
     background-position: center;
     position: relative;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
     @each $color in (red, blue, green, yellow, purple, pink, orange, brown, gray, black, white) {
         &[data-color-value="#{$color}"] {
             background-color: $color;
@@ -46,10 +46,37 @@
         }
     }
 
+    &::before {
+        content: attr(data-color-name);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(4px);
+        background-color: color('greys', 'darkest');
+        color: #ffffff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
     &:hover {
         border-color: color('greys', 'darker');
         transform: scale(1.1);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    &:hover::before,
+    &:focus-visible::before {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(-8px);
     }
 
     &:focus {
@@ -89,7 +116,7 @@
         }
     }
 
-   
+
     &:focus-visible {
         outline: 2px solid color('primary');
         outline-offset: 3px;
@@ -139,6 +166,11 @@
         &:hover {
             border-color: color('greys', 'lighter');
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15);
+        }
+
+        &::before {
+            background-color: color('greys', 'lightest');
+            color: color('greys', 'darkest');
         }
     }
 }

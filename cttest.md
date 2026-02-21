@@ -44,10 +44,10 @@ I've added beautiful, interactive **color swatches** to my BigCommerce store's p
 3. **Scroll down to "Custom Fields"**
 4. **Create a new custom field:**
    - **Field Name:** `color_options`
-   - **Field Value:** Enter colors as a list: `FF0000, 00FF00, 0000FF`
-     - `FF0000` = Red
-     - `00FF00` = Green  
-     - `0000FF` = Blue
+   - **Field Value:** Enter colors as a list in the format `Name:HexCode`. Example: `Red:FF0000, Green:00FF00, Blue:0000FF`
+     - `Red:FF0000` = Red color block
+     - `Green:00FF00` = Green color block 
+     - `Blue:0000FF` = Blue color block
    - (Use hex color codes without the # symbol)
 5. **Save the product**
 6. **Visit my store's category page** → See the swatches appear!
@@ -61,11 +61,11 @@ Customer visits category page
     ↓
 Sees color swatches under each product
     ↓
-Hovers over a swatch → Gets visual feedback
+Hovers over a swatch → Sees a beautiful tooltip with the Color Name (e.g. "Red")
     ↓
-Clicks a color → It highlights & shows available variants
+Clicks a color → It highlights & selects the corresponding "Red" product variant
     ↓
-Customer can buy with confidence knowing color is available
+Customer can buy with confidence knowing their favorite color is available
 ```
 
 ---
